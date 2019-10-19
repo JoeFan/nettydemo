@@ -14,6 +14,7 @@ public class ClientDemo {
             socket = new Socket("127.0.0.1", 6666);
             bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
             bufferedWriter.write("hello, i am client");
+            bufferedWriter.flush();
         } catch (IOException e) {
             log.error("exception {0}", e.getLocalizedMessage());
         } finally {

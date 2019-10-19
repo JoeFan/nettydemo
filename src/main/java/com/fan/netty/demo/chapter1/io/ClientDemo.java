@@ -12,13 +12,10 @@ public class ClientDemo {
         BufferedWriter bufferedWriter = null;
         try {
             socket = new Socket("127.0.0.1", 6666);
-            Thread.sleep(1000);
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            System.out.println("%%%%%%%%%%%%4"+bufferedReader.readLine() + " $$$$$4");
+            bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+            bufferedWriter.write("hello, i am client");
         } catch (IOException e) {
             log.error("exception {0}", e.getLocalizedMessage());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         } finally {
             if(bufferedWriter != null){
                 try {

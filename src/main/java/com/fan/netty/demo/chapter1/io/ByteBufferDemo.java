@@ -23,12 +23,13 @@ public class ByteBufferDemo {
             byteBuffer = ByteBuffer.allocate(48);
             int byteReads  = inChannel.read(byteBuffer);
             if(byteReads != -1){
-                byteBuffer.flip();
+                byteBuffer.flip(); //switch from write mode to read mode
                 while(byteBuffer.hasRemaining()){
                     System.out.println((char) byteBuffer.get());
                 }
             }
-            byteBuffer.clear();
+            byteBuffer.clear(); //clear the data in the buffer
+//            byteBuffer.compact(); //only clean the data has been read from the buffer
 
         } catch (FileNotFoundException e) {
             log.error("file not found {0}", e.getLocalizedMessage());

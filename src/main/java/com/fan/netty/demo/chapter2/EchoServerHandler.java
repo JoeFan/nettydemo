@@ -36,7 +36,7 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause){
         log.error("exception ", cause);
-        ctx.close();
+        ctx.close(); //close channel on exception
 
     }
 }

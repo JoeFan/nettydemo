@@ -15,8 +15,13 @@ public class ClientDemo {
             bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
             bufferedWriter.write("hello, i am client");
             bufferedWriter.flush();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            System.out.println(bufferedReader.readLine());
+            Thread.sleep(5000);
         } catch (IOException e) {
             log.error("exception {0}", e.getLocalizedMessage());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         } finally {
             if(bufferedWriter != null){
                 try {
